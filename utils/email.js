@@ -7,7 +7,7 @@ module.exports = class Email {
     this.to = user.email;
     this.firstName = user.name.split(" ")[0];
     this.url = url;
-    this.from = ` Jonas Schmedtmann <${EMAIL_FROM}>`;
+    this.from = ` Samyog <${process.env.EMAIL_FROM}>`;
   }
 
   newTransport() {
@@ -44,7 +44,7 @@ module.exports = class Email {
       to: this.to,
       subject,
       html,
-      text: htmlToText.fromString(html),
+      // text: htmlToText.fromString(html),
       // html:
     };
 
@@ -54,7 +54,7 @@ module.exports = class Email {
   }
 
   async sendWelcome() {
-    await this.send("Welcome", "Welcome to the Natours Family!");
+    await this.send("welcome", "Welcome to the Natours Family!");
   }
 
   async sendPasswordReset() {
